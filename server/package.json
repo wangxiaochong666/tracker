@@ -1,0 +1,250 @@
+{
+  "name": "tracker-services",
+  "version": "0.1.0",
+  "description": "",
+  "author": "",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "endOfLine": "lf",
+    "printWidth": 100,
+    "proseWrap": "preserve",
+    "semi": true,
+    "singleQuote": false,
+    "useTabs": false,
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "parser": "typescript"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "warnOnUnsupportedTypeScriptVersion": false,
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    },
+    "env": {
+      "browser": false,
+      "node": true,
+      "es6": true
+    },
+    "plugins": [
+      "@typescript-eslint",
+      "jsdoc",
+      "no-null",
+      "import"
+    ],
+    "rules": {
+      "@typescript-eslint/adjacent-overload-signatures": "error",
+      "@typescript-eslint/array-type": "error",
+      "camelcase": "off",
+      "@typescript-eslint/camelcase": [
+        "error",
+        {
+          "properties": "never",
+          "allow": [
+            "^[A-Za-z][a-zA-Za-z]+_[A-Za-z]+$"
+          ]
+        }
+      ],
+      "@typescript-eslint/class-name-casing": "error",
+      "@typescript-eslint/consistent-type-definitions": [
+        "error",
+        "interface"
+      ],
+      "@typescript-eslint/interface-name-prefix": "error",
+      "@typescript-eslint/no-inferrable-types": "error",
+      "@typescript-eslint/no-misused-new": "error",
+      "@typescript-eslint/no-this-alias": "error",
+      "@typescript-eslint/prefer-for-of": "error",
+      "@typescript-eslint/prefer-function-type": "error",
+      "@typescript-eslint/prefer-namespace-keyword": "error",
+      "quotes": "off",
+      "@typescript-eslint/quotes": [
+        "error",
+        "double",
+        {
+          "avoidEscape": true,
+          "allowTemplateLiterals": true
+        }
+      ],
+      "semi": "off",
+      "@typescript-eslint/semi": "error",
+      "@typescript-eslint/triple-slash-reference": "error",
+      "@typescript-eslint/type-annotation-spacing": "error",
+      "@typescript-eslint/unified-signatures": "error",
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "optionalDependencies": false
+        }
+      ],
+      "no-null/no-null": "error",
+      "jsdoc/check-alignment": "error",
+      "brace-style": [
+        "error",
+        "stroustrup",
+        {
+          "allowSingleLine": true
+        }
+      ],
+      "constructor-super": "error",
+      "curly": [
+        "error",
+        "multi-line"
+      ],
+      "dot-notation": "error",
+      "eqeqeq": "error",
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "new-parens": "error",
+      "no-caller": "error",
+      "no-duplicate-case": "error",
+      "no-duplicate-imports": "error",
+      "no-empty": "error",
+      "no-eval": "error",
+      "no-extra-bind": "error",
+      "no-fallthrough": "error",
+      "no-new-func": "error",
+      "no-new-wrappers": "error",
+      "no-return-await": "error",
+      "no-restricted-globals": [
+        "error",
+        {
+          "name": "setTimeout"
+        },
+        {
+          "name": "clearTimeout"
+        },
+        {
+          "name": "setInterval"
+        },
+        {
+          "name": "clearInterval"
+        },
+        {
+          "name": "setImmediate"
+        },
+        {
+          "name": "clearImmediate"
+        }
+      ],
+      "no-sparse-arrays": "error",
+      "no-template-curly-in-string": "error",
+      "no-throw-literal": "error",
+      "no-trailing-spaces": "error",
+      "no-undef-init": "error",
+      "no-unsafe-finally": "error",
+      "no-unused-expressions": [
+        "error",
+        {
+          "allowTernary": true
+        }
+      ],
+      "no-unused-labels": "error",
+      "no-var": "error",
+      "object-shorthand": "error",
+      "prefer-const": "error",
+      "prefer-object-spread": "error",
+      "quote-props": [
+        "error",
+        "consistent-as-needed"
+      ],
+      "space-in-parens": "error",
+      "unicode-bom": [
+        "error",
+        "never"
+      ],
+      "use-isnan": "error"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {}
+  },
+  "dependencies": {
+    "@nestjs/common": "^6.7.2",
+    "@nestjs/core": "^6.7.2",
+    "@nestjs/platform-express": "^6.7.2",
+    "@nestjs/platform-fastify": "^6.8.4",
+    "@nestjs/typeorm": "^6.2.0",
+    "dotenv": "^8.2.0",
+    "dotenv-expand": "^5.1.0",
+    "mysql": "^2.17.1",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.0",
+    "rxjs": "^6.5.3",
+    "typeorm": "^0.2.20"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^6.9.0",
+    "@nestjs/schematics": "^6.7.0",
+    "@nestjs/testing": "^6.7.1",
+    "@types/express": "^4.17.1",
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.5",
+    "@types/supertest": "^2.0.8",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.4",
+    "prettier": "^1.18.2",
+    "supertest": "^4.0.2",
+    "ts-jest": "^24.1.0",
+    "ts-loader": "^6.1.1",
+    "ts-node": "^8.4.1",
+    "tsconfig-paths": "^3.9.0",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "./coverage",
+    "testEnvironment": "node"
+  },
+  "license": "MIT"
+}
