@@ -1,0 +1,9 @@
+{
+  "name": "tracker-service",
+  "script": "bin/www",
+  "instances": "2",
+  "env": {
+    "NODE_ENV": "development",
+    "PORT": 80
+  }
+}
